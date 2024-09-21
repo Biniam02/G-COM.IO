@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-COM</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #080505;
+            overflow-x: hidden;
+            background: #f5f5f5;
+        }
+
+        header, footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f8f6f6;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #7AFCBB;
+            margin: 0;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #02fa38;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #030303;
+            color: #ffffff;
+        }
+
+        section {
+            width: 100%;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 90%;
+            width: 90%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            color: #7AFCBB;
+            margin: 0;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        section p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .service {
+            background: rgba(31, 29, 29, 0.8);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #fff;
+            flex: 1 1 calc(33% - 1rem);
+            max-width: calc(33% - 1rem);
+            transition: background 0.3s, transform 0.3s;
+            box-sizing: border-box;
+        }
+
+        .service:hover {
+            background: rgb(6, 0, 31);
+            transform: scale(1.05);
+        }
+
+        .service h3 {
+            color: #01f87d;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            color: #7AFCBB;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form p {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border: none;
+            background: #030000;
+            color: #faf8f8;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #7AFCBB;
+            color: #000;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #66e6a0;
+            color: #000;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: #7AFCBB;
+            color: #000;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #66e6a0;
+            color: #000;
+        }
+
+        .price-btn {
+            background-color: #7AFCBB;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .price-btn:hover {
+            background-color: #66e6a0;
+            color: #000;
+        }
+
+        #contact {
+            position: relative;
+            padding: 4rem 1rem;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            background-image: url('IMAGE/contact.jpg');
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            border-radius: 1000%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .profile p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .image-text-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .text-content {
+            max-width: 100%;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>G-COM</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" style="position: relative; width: 100%; height: 100vh; background-image: url('IMAGE/2.webp'); background-size: cover; background-position: center;">
+        <div class="background-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.651);"></div>
+        
+        <div style="position: relative; z-index: 2; width: 100%; height: 100%;">
+            <!-- Book Button (Top Center) -->
+            <a href="#contact" class="price-btn" style="position: absolute; top: 740px; left: 44%; transform: translateX(-56%); background-color: #ff6600; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">BOOK</a>
+            
+            <!-- Heading (Top Right) -->
+            <h2 style="position: absolute; top: 40px; right: 30px; color: #66e6a0; font-size: 60px; margin: 0;">We Build Beautiful Websites</h2>
+            
+            <!-- Paragraph (Bottom Left) -->
+            <p1 style="position: absolute; bottom: 180px; left: 40px; color: white; font-size: 23px; max-width: 80%; margin: 0;">
+                Your online presence deserves the best design. At G-COM, we specialize in creating stunning and functional websites that elevate your brand. Established in 2019, our commitment to excellence ensures that your digital footprint stands out in a crowded online world. Let us bring your vision to life with a design that captures the essence of your business.
+            </p1>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-image: url('IMAGE/services.webp');">
+        <div class="background-overlay"></div>
+        <div class="content-wrapper">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>New Company Registration</h3>
+                    <p>Simplify the process of starting your business with our expert guidance. We handle all the details, ensuring a smooth and hassle-free experience, so you can focus on building your vision.</p>
+                </div>
+                <div class="service">
+                    <h3>Tax Clearance</h3>
+                    <p>Ensure compliance and avoid potential issues with our tax clearance services. We manage the complexities of tax requirements, giving you peace of mind and allowing you to concentrate on growing your business.</p>
+                </div>
+                <div class="service">
+                    <h3>Document Editing</h3>
+                    <p>Enhance the clarity and impact of your documents with our professional editing. We refine your content to ensure it communicates your message effectively and leaves a lasting impression.</p>
+                </div>
+                <div class="service">
+                    <h3>Web Design</h3>
+                    <p>Create a powerful online presence with our custom web design services. We build websites that are visually appealing, user-friendly, and optimized for performance, helping your business connect with customers and grow online.</p>
+                </div>
+                <div class="service">
+                    <h3>SEO Optimization</h3>
+                    <p>Ensure your website ranks well on search engines with our SEO optimization services. We optimize your site's content, structure, and keywords to improve visibility and attract more traffic.</p>
+                </div>
+                <div class="service">
+                    <h3>E-commerce Development</h3>
+                    <p>Expand your business online with our e-commerce development services. We build secure, scalable online stores that make it easy to sell products and services directly from your website.</p>
+                </div>
+                <div class="service">
+                    <h3>Website Maintenance and Support</h3>
+                    <p>Keep your website running smoothly with our ongoing maintenance and support services. We handle updates, backups, security checks, and any technical issues to ensure your site stays up-to-date and secure.</p>
+                </div>
+                <div class="service">
+                    <h3>Graphic Design and Branding</h3>
+                    <p>Strengthen your brand identity with our graphic design and branding services. We create cohesive visual elements, including logos, banners, and custom graphics, to ensure your website reflects your brand’s personality.</p>
+                </div>
+                <div class="service">
+                    <h3>Logo Design</h3>
+                    <p>Establish a strong brand identity with a unique and memorable logo created by our talented designers. We craft logos that reflect your brand’s values and make a lasting impression on your audience.</p>
+                </div>
+                <div class="service">
+                    <h3>Poster Design</h3>
+                    <p>Capture attention and convey your message effectively with our custom poster designs. We create visually striking posters tailored to your needs, ensuring your message stands out and resonates with your audience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" style="background-image: url('IMAGE/pricing.jpg');">
+        <div class="background-overlay"></div>
+        <div class="content-wrapper">
+            <h2>Our Pricing</h2>
+            <p>We offer competitive pricing for our services to ensure you get the best value for your investment. Here’s a breakdown of our services and their costs:</p>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>New Company Registration</h3>
+                    
+                    <a href="#contact" class="price-btn">R799.99</a>
+                </div>
+                <div class="service">
+                    <h3>Tax Clearance</h3>
+                    
+                    <a href="#contact" class="price-btn">R499.99</a>
+                </div>
+                <div class="service">
+                    <h3>Document Editing</h3>
+                    
+                    <a href="#contact" class="price-btn">R299.99</a>
+                </div>
+                <div class="service">
+                    <h3>Web Design</h3>
+                    
+                    <a href="#contact" class="price-btn">R1599.99</a>
+                </div>
+                <div class="service">
+                    <h3>SEO Optimization</h3>
+                    
+                    <a href="#contact" class="price-btn">R899.99</a>
+                </div>
+                <div class="service">
+                    <h3>E-commerce Development</h3>
+                    
+                    <a href="#contact" class="price-btn">R1999.99</a>
+                </div>
+                <div class="service">
+                    <h3>Website Maintenance and Support</h3>
+                    
+                    <a href="#contact" class="price-btn">R999.99</a>
+                </div>
+                <div class="service">
+                    <h3>Graphic Design and Branding</h3>
+                    
+                    <a href="#contact" class="price-btn">R650.00</a>
+                </div>
+                <div class="service">
+                    <h3>Logo Design</h3>
+                    
+                    <a href="#contact" class="price-btn">R350.00</a>
+                </div>
+                <div class="service">
+                    <h3>Poster Design</h3>
+                    
+                    <a href="#contact" class="price-btn">R350.00</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="background-overlay"></div>
+        <div class="content-wrapper">
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <p>Have any questions or want to get started with our services? We’re here to help! Reach out to us through the contact form below or get in touch via email. We look forward to hearing from you!</p>
+            <div class="profile">
+                <img src="IMAGE/biniam.jpeg" alt="Biniam I">
+                <p>Biniam I</p>
+                <p>
+                    <a href="mailto:2024gcom@gmail.com">Email Us</a><br>
+                    <a href="https://wa.me/your-whatsapp-0644216164">Chat on WhatsApp</a>
+                </p>
+            </div>
+            
+                <form action="your-form-handler.php" method="post">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <a href="mailto:2024gcom@gmail.com" class="contact-btn">Email Us</a>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 G-COM. All rights reserved.</p>
+            <p>Follow us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, and <a href="#">LinkedIn</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
